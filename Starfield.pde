@@ -12,8 +12,10 @@ bob = new NormalParticle[1000];
 void draw()
 {
 	//your code here
+ background(0,0,0);
   for (int i = 0; i < bob.length; i ++)
   {
+   
     bob[i].show();
     bob[i].move();
    
@@ -22,26 +24,27 @@ void draw()
 class NormalParticle
 {
 	//your code here
+  int myColor;
   double myAngle, mySpeed;
   double myX, myY;
 
   NormalParticle()
   {
-     myX = 200;
-     myY = 240;
-     myAngle = 2.03;
-     mySpeed = 8.25;
+     myX = myY = 200;
+     myAngle = Math.random()*6*Math.PI;
+     mySpeed = Math.random()*5;
+     myColor = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
     
   }
   void show()
   {
-    fill(0,0,0);
-    ellipse((float)myX,(float)myY,5,5);
+    fill(myColor);
+    ellipse((float)myX,(float)myY,10,10);
   }
   void move()
   {
-    myX = myX + Math.cos(myAngle)*mySpeed;
-    myY = myY + Math.cos(myAngle)*mySpeed;
+    myX = myX * Math.cos(myAngle)*mySpeed;
+    myY = myY * Math.sin(myAngle)*mySpeed;
 }
 }
 interface Particle
